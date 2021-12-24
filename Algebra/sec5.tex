@@ -1,0 +1,58 @@
+\subsection{Gruppenwirkung}
+
+We just define left group action here. Right group action is quite similar.(Actually we don't use it at all)
+\begin{definition}[Left group action]
+    Let $G$ be a group with neutral element $e$, and \(X\) is a set. Then (left) group action $s$ of $G$ on $X$ is a function \(s:G\times X \to X\), that satisfied the following two axiom: 
+    \begin{itemize}
+        \item $s(e,x) = x$
+        \item \(s(g,s(h,x)) = s(gh,x)\)
+    \end{itemize}
+    (with $s(g,x)$ often shortened to $gx$ or $g\cdot x $ when the action being considered is clear from context.)
+    \begin{itemize}
+        \item $ex = x$
+        \item \(g(hx) = (gh)x\)
+    \end{itemize}
+    for all $g$ and $h$ in $G$ and all $x$ in $X$.
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item The group G is said to act on X (from the left). A set X together with an action of G is called a (left) G-set.
+        \item You must know the operation in $gh$ and $hx$ is different.
+    \end{itemize}
+\end{remark}
+
+\begin{definition}[Bahn or orbit]
+    Consider a group $G$ acting on a set $X$. The orbit of an element $x$ in $X$ is the set of elements in $X$ to which $x$ can be moved by the elements of $G$. The orbit of $x$ is denoted by $Gx$. $$G\cdot = \{g\cdot x :g \in G\}$$
+\end{definition}
+
+\begin{remark}
+    \item  The action is transitive iff it has exactly only one orbit, that is, if there exists $x$ in $X$ with $Gx =X$. This is the case iff $Gx= X$ for all $x$ in $X$.
+    \item Two orbit is same or disjoint, because $gx = hy \in Gx\cap Gy\Rightarrow x = g^{-1}hy, also Gx\subset Gy$ and $y = h^{-1}gx, \text{also }  Gy\subset Gx$. So X is disjoint union of every orbit. (i.e. orbits is a parition.)
+\end{remark}
+
+Given $g$ in $G$ and $x$ in $X$ with $ g\cdot x=x$, $g\cdot x=x$ , it is said that "$x$ is a fixed point of g" or that "g fixes $x$". Then we can defien stabilizer and fixed points.
+\begin{definition}[Stabilizer and fixed points]
+    \begin{itemize}
+        \item For every $x$ in \(X\), the stabilizer subgroup of $G$ with respect to $x$ is the set of all element in $G$ that fix $x$. $G_x :=\{g\in G\mid gx = x\}$.
+        \item $x$ ist fixed point if $Gx = \{x\}$. $X^G$ is set of all fixed(invariant) point.
+    \end{itemize}
+\end{definition}
+\begin{remark}
+    The action of $G$ on $X$ is free iff all stabilizer are trivial.
+\end{remark}
+
+
+\begin{lemma}
+    Let $G\times X \to X$ a action of $G$ on $X$. For every $x\in X$ the function $\varphi : G \to X, g\mapsto gx $ can be reduced to a isomorphism $G/G_x\simeq Gx$, where $G/G_X$ is set of left cosets. In particular it holds $\ord(Gx) = G : Gx$
+\end{lemma}
+\begin{proof}
+    It holds \(\varphi (g) = \varphi (h) \Leftrightarrow gx = hx \Leftrightarrow h^{-1}gx =x \Leftrightarrow h^{-1} g \in G_x \Leftrightarrow gG_x= hG_x\)\\
+    Also $\varphi$ is a injective function $G \to X, g\mapsto $. Obvioulsy is $\varphi $ surjective.
+\end{proof}
+
+\begin{theorem}
+    $$|X| = \sum_{i=1}^r |Gx_i| = \sum_{i=1}^r |G:Gx_i|$$
+\end{theorem}
+
+FIXME: SHENME YA
