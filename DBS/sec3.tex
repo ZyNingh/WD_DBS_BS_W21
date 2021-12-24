@@ -1,0 +1,29 @@
+\subsection{Die Relationale Algebra}
+Wichtigste Beispiele:
+\begin{itemize}
+    \item Relationale Algebra
+    \item Relationale-Kalk\"ul.
+\end{itemize}
+
+5 Grundoperationen der Relationalen Algebra:
+\begin{itemize}
+    \item Vereinigung: $R = S \cup T$
+    \item Differenz: \(R = S - T\)
+    \item Kartesisches Produkt: \(R = S \times T\)
+    \item Selektion: \(R = \sigma_F(S)\)
+    \item Projektion \(\pi_{A,B,...}(S)\)
+\end{itemize}
+\begin{remark}
+    Die Kombinationen aus Selektion und kartesischen Produkt heiss Join.
+\end{remark}
+Eine Reihe n\"utzlicher Operationen lassen sich mit Hilfe der 5 Grundoperationen ausdr\"ucken:
+\begin{itemize}
+    \item Durchschnitt: $R=S\cap T$
+    \item Quotient    $R = S \div T$
+    \item Join    $R = S \bowtie T$
+    \begin{itemize}
+        \item Thera-Join $R \bowtie_{A\Theta B} S, \Theta\in \{=,\leq ,<,\geq, >,\not = \}$ (Denn: $R \bowtie_{A\Theta B} S = \sigma_{A\Theta B}(R\times S)$)
+        \item Equi-Join $R \bowtie_{A= B}$
+        \item Natural Join
+    \end{itemize}
+\end{itemize}

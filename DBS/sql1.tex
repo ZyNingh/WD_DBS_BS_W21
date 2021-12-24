@@ -1,0 +1,185 @@
+\section{SQL}
+\subsection{Tabelledefinition in SQL}
+\begin{verbatim}
+    CREATE TABLE name       // name Name der Relation
+    (
+        a1 d1 c1,           // definition des ersten Attributs
+        a2 d2 c2,
+        ....
+        ak dk ck            // definition des Attributs Nr. k
+    )
+\end{verbatim}
+Hierbei bedeuten
+\begin{itemize}
+    \item ai der name des Attributs Nr. i
+    \item di der Typ (die Domain) des Attributs
+    \item ci ein optionaler Constraint f\"ur das Attribut
+\end{itemize}
+Wirkung: Definition eines Realtionschemas mit einer leeren Realtion als Auspr\"agung.
+\\
+Der SQL-Standard kennt u.a. folgende Datentypen:
+\begin{itemize}
+    \item integer oder auch integer4, integer
+    \item smallint oder integer2
+    \item float(p) oder auch float
+    \item decimal(p,q) und numeric(p,q) mit p Stellen, davon q Nachkommast.
+    \item character(n), char(n) f\"ur Strings fester L\"ange n
+    \item character varying(n), varchar(n): variable Strings
+    \item date, time, timestamp f\"ur Datum und Zeit
+\end{itemize}
+Einfache Zus\"atze (Integrit\"atsbedingungen) k\"onnen unmittelbar hinter einer Attributdefinition stehen:
+\begin{itemize}
+    \item not null
+    \item primary key
+    \item unique
+    \item references t1(a1)
+    \item default w1: Wert w1 ist Default, wenn unbesetzt.
+    \item check f
+\end{itemize}
+Zus\"atze, die keinem einzelnen Attribut zugeordnet sind, stehen mit Komma abgetrennt in extra Zeilen
+%S.27
+\begin{itemize}
+    \item primary key(A1,A2,...)
+    \item unique (A1,A2,...)
+    \item foreign key (A1,A2,...) references t1 (B1,B2,...)
+    \item check f
+\end{itemize}
+\begin{remark}
+    SQL ist case-insensitiv.
+\end{remark}
+L\"osche eines Tupels in B Referenzen nicht m\"oglich.
+Es gibt aber verschiedene Zus\"atze:.\\
+foreign key(a5,a6) references B(b1,b2)
+\begin{itemize}
+    \item on delete cascade
+    \item on update cascade
+    \item on delete set null
+\end{itemize}
+FIXME:\\
+Weitere DDL(Data Definition Language):
+\begin{verbatim}
+    drop table n1  // RS n1 wird mit allen evtl.
+                   / /vorhandenen Tupeln geloescht
+    alter table n1 add (a1 d1 c1, a2 d2 c2, ...)
+    alter table drop (a1, a2, ...)
+    alter table modify (a1 d1 c1, a2 d2 c2, ...)
+\end{verbatim}
+
+\subsection{Anfragen}
+Grundform einer Anfrage:
+\begin{verbatim}
+    Projektion  -> SELECT <List von Attributsnamene bzw. *>
+    Kreuzprodkt -> FROM   <ein oder mehrere Relationennamen>
+    Selektion   -> [WHERE <Bedigung>]
+\end{verbatim}
+Mengenoperationen:
+\begin{verbatim}
+    SELECT ... FROM ... WHERE ... 
+    UNION
+    SELECT ... FROM ... WHERE ...
+\end{verbatim}
+
+\begin{remark}
+    \begin{itemize}
+        \item SQL ist relational vollst\"andig.
+        \item Duplikatelimination nur, wenn durch das Schlüsselwort DISTINCT explizit verlang:
+              \begin{verbatim}
+            SELECT * FROM ...           -- Keine Projektion
+            SELECT A1, A2, ... FROM ... -- Projektion ohne
+                                    -- Duplikatelimination
+            SELECT DISTINCT A1, A2, ... -- Projektion mit
+                                    -- Duplikatelimination
+        \end{verbatim}
+        \item Mann kann Schreibarbeit sparen, indem man den Relationen lokal kurze Namen zuweist(Alias-Namen):
+              \begin{verbatim}
+            SELECT m.Name, a.Name
+            FROM Mitarbeiter m, Abteilung a
+            WHERE ...
+        \end{verbatim}
+        \item Where\begin{itemize}
+                  \item Vergleichsoperatoren: \(=, <, \leq, > , \geq ,<>\)
+                  \item Test auf Wert undefinirt:  A IS NULL / IS NOT NULL
+                  \item Inexakter Stringvergleich: A LIKE 'Datenbank\%'
+                        \begin{itemize}
+                            \item \% steht f\"ur einen beliebig belegbaren Teilstring
+                            \item \_ steht f\"ur genau ein einzelnes frei belegbares Zeichen
+                        \end{itemize}
+                  \item A1 IN (2, 3, 4, 5, 12, 13)
+              \end{itemize}
+    \end{itemize}
+
+\end{remark}
+
+Join: Normalerweise wird der Join wie bei der relationalen Algebra als Selektionsbedingung über dem kartesischen Produkt formuliert.
+Folgende Anfrage sind m\"oglich in SQL:
+\begin{verbatim}
+    SELECT * FROM Mitarbeiter m, Abteilung a WHERE m.ANr = a.ANr
+    SELECT * FROM Mitarbeiter m JOIN Abteilung a on a.ANr = m.ANr
+    SELECT * FROM Mitarbeiter JOIN Abteilung using (ANr)
+    SELECT * FROM Mitarbeiter natural JOIN Abteilung
+\end{verbatim}
+TODO:OUTER JOIN. bu ru du yi ba, qi mo kao bu hui kao outer join.
+
+\"Anderungs-Operationen:\\
+Grunds\"atzlich unterscheiden wir:
+\begin{verbatim}
+    INSERT:  Einfuegen von Tupeln in eine Relation
+    DELETE:  Loeschen von Tupeln aus einer Relation
+    UPDATE:  Aedern von Tupeln einer Relation
+\end{verbatim}
+\begin{remark}
+    Usage:
+    \begin{itemize}
+        \item UPDATE: \begin{verbatim}
+            UPDATE Realtion
+            SET attribut1 = ausdruck1
+                [,...,
+                attributn = ausdruckn]
+            [WHERE bedingung]
+        \end{verbatim}
+              \begin{itemize}
+                  \item UPDATE-Operationen k\"onnen zur Verletzung von Integrit\"atsbedingungen f\"uhren: Abbruch der Operation mit Fehlermeldung.
+              \end{itemize}
+        \item DELTEE: \begin{verbatim}
+            DELETE FROM relation
+            [WHERE bedingung]
+        \end{verbatim}
+              \begin{itemize}
+                  \item L\"oscht alle Tupel, die die Bedingung erfüllen
+                  \item Ist keine Bedingung angegeben, werden alle Tupel
+                        gel\"oscht
+                  \item Abbruch der Operation, falls eine Integrit\"atsbedingung verletzt w\"urde (z.B. Fremdschlüssel ohne cascade)
+              \end{itemize}
+        \item INSERT:\begin{verbatim}
+            INSERT INTO relation (attribut1, attribut2,...)
+            VALUES (konstante1, konstante2, ...)
+            or
+            INSERT INTO relation 
+            VALUES (konstante1, konstante2, ...)
+            or
+            INSERT INTO relation [(attribut1 , ...)]
+            ( SELECT ... FROM ... WHERE ... )
+        \end{verbatim}
+        \begin{itemize}
+            \item Ist die optionale Attributliste hinter dem Relationennamen angegeben, dann
+                  \begin{itemize}
+                      \item k\"onnen unvollständige Tupel eingef\"ugt werden: Nicht aufgef\"uhrte Attribute werden mit NULL belegt.
+                      \item werden die Werte durch die Reihenfolge in der
+                            Attributsliste zugeordnet.
+                  \end{itemize}
+            \item Ist die optionale Attributliste hinter dem Relationennamen
+                  angegeben, dann\begin{itemize}
+                      \item k\"onnen unvollst\"andige Tupel eingef\"ugt werden:
+                            Nicht aufgef\"uhrte Attribute werden mit NULL belegt
+                      \item werden die Werte durch die Reihenfolge in der
+                            Attributsliste zugeordnet. (mangelnde Datenunabh\"angigkeit!)
+                  \end{itemize}
+            \item Wirkung zum Einf\"ugen berechneter Tupel:
+                  \begin{itemize}
+                      \item Alle Tupel des Ergebnisses der SELECT-Anweisung werden in die Relation eingef\"ugt.
+                      \item Die optionale Attributliste hat dieselbe Bedeutung wie bei der entsprechenden Ein-Tupel-Operation.
+                      \item Bei Verletzung von Integrit\"atsbedingungen (z.B. Fremdschl\"ussel nicht vorhanden) wird die Operation nicht ausgeführt (Fehlermeldung).
+                  \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{remark}
