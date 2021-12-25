@@ -1,0 +1,36 @@
+\subsection{Einheiten in $\mathbb{Z}/(n)$}
+\[\bar{a}\in \left(\mathbb{Z}/(n)\right)^\times\Leftrightarrow\exists \bar{x} \in \left(\mathbb{Z}/(n)\right)^\times\ \ \text{mit}\ \ \bar{a}\cdot\bar{x} = \bar{1},\text{d.h.}\ ax=1 \mod n\]
+i.e. \(\left(\mathbb{Z}/(n)\right)^\times = \{\bar{a}\in (\mathbb{Z}/(n)\mid 0 < a < n \wedge a \ \text{ist teilerfremd zu }\ n\}\)
+\begin{remark}
+    \(m_1,\cdots,m_s\) pairwise relatively prime natural number. \(m = m_1\cdots m_s \Rightarrow\left(\mathbb{Z}/(m)\right)^\times=\left(\mathbb{Z}/(m_1)\right)^\times \times\cdots\times\left(\mathbb{Z}/(m_s)\right)^\times\)
+\end{remark}
+
+\begin{definition}[Euler $\varphi$-function]
+    For \(n\in\mathbb{Z}^+\) let \(\phi(n)\) be the number of positive integers \(a\leq n\) with a relatively prime to n, i.e. \((a,n)=1\). (i.e. \(\varphi(n) = \left|\left(\mathbb{Z}/(n)\right)^\times \right|\))
+\end{definition}
+\begin{proposition}
+    Basic proposition of Euler $\varphi$-function:
+    \begin{enumerate}
+        \item \(m_1,\cdots,m_s\in \mathbb{N}\) pairwise relatively prim \(\Rightarrow \varphi(m_1\cdot \cdots \cdot m_s) = \varphi(m_1)\cdot \cdots \cdot \varphi(m_s)\)
+        \item \(p\in\mathbb{P}\Rightarrow \varphi(p^n)=p^{n-1}(p-1)\)
+        \item \(n\in\mathbb{N}\Rightarrow \prod_{p\mid n \wedge p\in\mathbb{P}}(1-\frac{1}{p})\)
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    TODO:ZAI SHUO
+\end{proof}
+
+%We shall study roots of unity in greater detail later. A generator for the group of $n$-th roots of unity is called a primitive $N$-th root of unity.
+
+\begin{definition}[Primitive root modul $p$]
+    A number $g$ is a primitive root modulo $n$ if every number a coprime to n is congruent to a power of $g$ modulo $n$.
+\end{definition}
+\begin{remark}
+    i.e. \(\{1,g,g^2,\cdots,g^[p-2]\}= \mathbb{F}_p^+\).
+\end{remark}
+
+\begin{theorem}
+    \(\left(\mathbb{F}_p\right)^+\) is cyclic.\\
+     In particular, there is a isomorphism $g:\mathbb{Z}/(p-1)\to\left(\mathbb{Z}/(p))^+\right),\ m\mapsto g^m$ for \(g\).
+\end{theorem}

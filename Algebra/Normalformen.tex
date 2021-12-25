@@ -1,0 +1,275 @@
+This is followed by lecture notes from Linear Algebra II by Prof. W. B.
+\subsubsection{Elementare Teilbarkeitslehre}
+Im weiteren sei \(R\) stets ein kommutativer Ring mit \(1\). Unsere wichtigsten Beispiel sind der Ring der ganzen Zahlen \(\mathbb{Z}\) und der Polynomring \(\mathbb{K}[x]\) \"uber einem K\"orper \(\mathbb{K}\).
+
+\begin{definition}
+    Zwei Element \(a,b\in R\) hei\ss en zueinander assoziiert, falls \(a|b\) und \(b|a\). In Zeichen: \(a\sim b\)
+\end{definition}
+\begin{lemma}
+    Falls \(R\) nullteilerfrei ist, so gilt \[a\sim b\Leftrightarrow \exists e\in R^\times :b=ea\]
+\end{lemma}
+\begin{proof}
+    \begin{itemize}
+        \item[\("\Leftarrow"\)] \((b=\mu a\Rightarrow a|b)\wedge(\mu^{-1}b =a\Rightarrow b|a)\Rightarrow a\sim b\)
+        \item[\("\Rightarrow"\)] \((a|b\Rightarrow \exists e \in R:b=ea)\wedge(b|a\Rightarrow\exists f\in R: a= fb)\Rightarrow fbe=b\Rightarrow b(fe-1)=0\Rightarrow fe = 1\Rightarrow e,f\in R^\times\)
+    \end{itemize}
+\end{proof}
+F\"ur \(a\in R\) bezeichnen wie nun mit \[(a) = a R=\{ra|r\in R\}\]
+die Menge aller Vielfachen von $a .$ In einem nullteilerfreien Ring gelten folgende Äquivalenzen:
+\begin{itemize}
+    \item  $\quad a \mid b \Longleftrightarrow(b) \subseteq(a)$
+    \item \( \quad a \sim b \Longleftrightarrow(a)=(b)\)
+    \item \( \quad(a)=R \Longleftrightarrow a \in R^{\times} \)
+
+\end{itemize}
+
+\begin{definition}
+    Eine Teilmenge $J \subseteq R$. heift Ideal, falls
+    \begin{itemize}
+        \item $\quad 0 \in J$.
+        \item $\quad a, b \in J \Longrightarrow a+b \in J$
+        \item $\quad a \in J, r \in R \Longrightarrow r a \in J$
+
+    \end{itemize}\end{definition}
+Ideale der Form (a) heifen Hauptideale.
+\begin{example}
+    In \(\mathbb{Z}\) ist jedes Ideal ein Hauptideal.
+\end{example}
+\begin{proof}
+    Sei \(\alpha\) ein Ideal in \(\mathbb{R}\), in Zeichen: \(\alpha\triangleleft \mathbb{Z}\). oE \(\alpha\not = (0)={0}\). Sei \(a:=\min(\alpha\cap \mathbb{N})\). z.z.:\((a) = \alpha\).\begin{itemize}
+        \item[\("\subseteq"\)] \(a\in \alpha \Rightarrow \mathbb{Z}a \subseteq \alpha\)
+        \item[\("\supseteq"\)] Sei \(b\in \alpha\). Teil mit Rest: \(b=qa+r,\quad 0\leq r < a\Rightarrow r = b -qa \in \alpha\Rightarrow r =0\Rightarrow b =qa \in (a)\)
+    \end{itemize}
+\end{proof}
+Analog: Auch in \(\mathbb{K}[x]\) ist jedes Ideal ein Hauptideal.
+
+\begin{definition}
+    Seien $I, J$ zwei Ideale in $R .$ Dann heißt
+    \begin{itemize}
+        \item     $I+J=\{a+b \mid a \in I, b \in J\}$ die Summe
+        \item    $I \cap J$ der Durchschnitt und
+        \item    $    I J=\left\{\sum_{i \text { end! }} a_{i} b_{i} \mid a_{i} \in I, b_{i} \in J\right\} \text { das Produkt }$
+
+    \end{itemize}    der Ideale $I$ und $J$.
+\end{definition}
+\begin{example}
+    \(R=\mathbb{Z}[x]\). Dann ist \((2) + (x) \) ist kein Hauptideal.
+\end{example}
+\begin{proof}
+    Angenommen \((2)+(x) = (g),\ g\in \mathbb{Z}[x]\Rightarrow (x)\subseteq (g)\Rightarrow g|x\Rightarrow \deg(g)\leq 1\Rightarrow g(x)=x+1,a\in\mathbb{Z}\ \text{oder } g=\pm 1\lightning\)    
+\end{proof}
+
+Man beachte, daB Summe, Durchschnitt und Produkt wieder Ideale in $R$ sind.
+
+\begin{definition}
+    Ein nullteilerfreier Ring heift Hauptidealring, falls jedes Ideal ein Hauptideal ist.
+\end{definition}
+
+Die Ringe $\mathbb{Z}$ und $K[x]$ sind Hauptidealringe. Tatsächlich sind diese Ringe sogar Beispiele für sogenannte Euklidische Ringe.
+
+\begin{definition}
+    Ein nullteilerfreier Ring $R$ heiBt euklidisch, falls es eine Abbildung $\nu: R \backslash\{0\} \longrightarrow$ $\mathbb{N}_{0}$ gibt, so daB gilt: zu $a, b \in R, b \neq 0$, gibt es $q, r \in R$ mit
+    $$
+        a=q b+r, \quad r=0 \text { oder } \nu(r)<\nu(b) .
+    $$
+    Die Abbildung $\nu$ nennt man euklidische Norm.
+\end{definition}
+\begin{example}
+    \(R=\mathbb{Z}[i]=\mathbb{Z}[\sqrt{-1}]=\{a+bi\mid a,b\in\mathbb{Z}\}\) ist euklidisch bez \(\phi(a+bi):=N(a+bi)=a^2+b^2\).
+\end{example}
+
+\begin{theorem}
+    Jeder euklidische Ring ist ein Hauptidealring.
+    Definition $5.1 .8$ Seien $a, b \in R .$ Wir nennen $d \in R$ einen gröften gemeinsamen Teiler von $a$ und $b$, falls die folgenden zwei Eigenschaften erfullt sind:
+    \begin{itemize}
+        \item $d \mid a$ und $d \mid b$.
+        \item  Falls $d_{1} \mid a$ und $d_{1} \mid b$ für $d_{1} \in R$ gilt, so gilt auch $d_{1} \mid d$.
+    \end{itemize}
+\end{theorem}
+\begin{remark}
+    Ein ggT (falls er existiert) ist bis auf Assoziiertheit eindeutig bestimmt. D.h., sind $d_{1}$ und $d_{2}$ zwei $\mathrm{gg} \mathrm{T}$ von $a$ und $b$, so gibt es eine Einheit $u \in R^{\times}$ mit $d_{1}=u d_{2}$.
+\end{remark}
+
+In beliebligen kommutativen Ringen existieren ggT im Allgemeinen nicht. Jedoch gilt der folgende Satz.
+
+\begin{theorem}
+    Sei $R$ ein Hauptidealring und $a, b \in R .$ Sei $(a)+(b)=(d) .$ Dann ist $d$ ein $\mathrm{gg} T$ von a und $b$
+\end{theorem}
+
+In euklidischen Ringen verfügen wir über einen Algorithmus zur expliziten Berechnung von $\operatorname{ggT}(a, b) .$ Der erweiterte euklidische Algorithmus erlaubt sogar die Berechnung einer Darstellung
+$$
+    g g T(a, b)=x a+y b \text { mit } x, y \in R \text { . }
+$$
+
+\subsubsection{Der chinesischer Restsatz}
+\begin{theorem}[Chinesischer Restsatz]
+    Seien \(I_1,\cdots ,I_n\) Ideale in \(R\) mit \(I_k+I_l=R\)(koprim) f\"ur \(k\not = l\). Seien \(r_1,\cdots,r_n\in R\). Dann gibt es ein \(x\in R\) mit \(x\equiv r_k(\operatorname{mod} I_k)\) f\"ur \(k=1,\cdots,n\). Falls \(y\in R\) eine weitere L\"osung dieser simultanen Kongruenzen ist, so gilt \(x\equiv x(\operatorname{mod} J)\), wobei \(J:=I_1\cap\cdots\cap I_n\). Zwei verschiedene L\"osungen sind also modulo \(J\) eindeutig bestimmt.
+\end{theorem}
+\begin{proof}
+    TODO: MAYBE LATER>.
+\end{proof}
+
+In \"aquivalenter Weise kann man den chinesischen Restsatz wie folgt formulieren.
+
+\begin{theorem}
+    Seien $I_{1}, \ldots, I_{n}$ Ideale in $R$ mit $I_{k}+I_{l}=R$ für $k \neq l$. Dann ist die Abbildung
+    $$
+        \begin{aligned}
+            \varphi: R / J & \longrightarrow & R / I_{1} \times \ldots \times R / I_{n} \\
+            x+J            & \mapsto         & \left(x+I_{1}, \ldots, x+I_{n}\right)
+        \end{aligned}
+    $$
+    ein Isomorphismus von Ringen.
+\end{theorem}
+\begin{proof}
+    Sei \(r_1+I_1,\cdots,r_n+I_n\) ein beliebliges Element in \(\Pi_{i=1}^nR/I_i\). Chinesischer Restsatz \(\Rightarrow a\in R\) mit \(a\equiv r_i(\operatorname{ mode }I_1), i=1,\cdots,n\). Klar: \(\overline{\varphi}(\overline{a}) = (a+I_1,\cdots,a+I_n)\)
+\end{proof}
+Die Surjektivität von $\varphi$ ist dabei äquivalent zur Existenzaussage im chineschen Restsatz, die Injektivität ist äquivalent zur Eindeutigkeitsaussage.
+\begin{example}
+    L\"ose \(\left\{ \begin{matrix*}
+        a \equiv 2(\operatorname{mod}\  10)\\
+        a \equiv 4(\operatorname{mod}\  7) 
+    \end{matrix*}\right.\) in \(\mathbb{Z}\).\\
+    Dazu \(
+        1=3\cdot 7-2\cdot 10  \Rightarrow 4-2= 6\cdot7-4\cdot 10     \Rightarrow 4-6\cdot 7=2-4\dot 10 = : a=-38
+    \). \(a\) kann man ab\"andern um Vielfache von \(70\). Also ist \(32\) die kleinste positive L\"osung
+\end{example}
+\begin{lemma}
+    \begin{align*}
+        R/I & \stackrel{\simeq}{\twoheadrightarrow}\Pi_{i=1}^nR/I_i\\
+        a&\mapsto (a+I_1,\cdots,a+I_n).
+    \end{align*}
+\end{lemma}
+\begin{lemma}
+    Sei \(R=\mathbb{Z}\). Seien \(m_1,\cdots,m_n\in\mathbb{N}\) paarweise teilerfremd. Seien \(a_1,\cdots,a_n\in\mathbb{Z}\). Dann gibt es ein ganze Zahl \(a\) mit \[a\equiv a_i\ (\operatorname{mod}\ m_i),\ \ i=1,\cdots,n\] \(a\) ist eindeutig module \(m:=m_1\cdots m_n\)
+\end{lemma}
+\begin{proof}
+    Nimm \(I_i=m_i\mathrm{Z}\). Insbesondere: Sei \(\mathbb{Z}\ni m=\pm\Pi_{i=1}^np_i^{e_i}\) die Primzahlzerlegung. Dann gilt \(\mathbb{Z}/m\mathbb{Z}\simeq \Pi_{i=1}^n\mathbb{Z}/p_i^{e_i}\mathbb{Z},\ a+m\mathbb{Z}\mapsto (a+p_1^{e_1}\mathbb{Z},\cdots,1+p_n^{e_n}\mathbb{Z})\)
+\end{proof}
+
+% FIXME:Einschub?
+
+\begin{definition}
+    Ein nullteilerfreier Ring hei\ss t auch Integrit\"atsbereich.
+\end{definition}
+
+
+\begin{definition}
+    Ein Element $p \in R$ heißt irreduzibel, falls $p \notin R^{\times}$ und keine echten Teiler hat,
+    d.h. aus $p=a b$ folgt $a \in R^{\times}$ oder $b \in R^{\times}$.
+\end{definition}
+
+Die irreduziblen Elemente in $\mathbb{Z}$ sind genau die Primzahlen und ihre Negativen. In beliebigen Ringen gibt es jedoch einen Unterschied zwischen den Begriffen "prim" und "irreduzibel".
+
+
+\begin{definition}
+    Ein Element $p \in R$ heißt prim oder Primelement, falls gilt:
+    $$
+    p\mid a b \Longrightarrow p\mid a \text { oder } p \mid b
+    $$
+\end{definition}
+
+
+\begin{remark}
+    Falls $R$ nullteilerfrei ist, so gilt: $p$ prim $\Longrightarrow p$ irreduzibel.
+\end{remark}
+
+Die Umkehrung ist im Allgemeinen falsch, gilt aber in Hauptidealringen.
+
+\begin{proof}
+    Sei \(p=ab\Rightarrow p\mid ab\stackrel{\text{etwa}}{\Rightarrow}p\mid a\Rightarrow a=pc\Rightarrow p=pcb\Rightarrow p(1-cd)=0\Rightarrow cd=1\Rightarrow b\in R^*\)
+\end{proof}
+\begin{remark}
+    Achtung: Die Umkehrung ist i. A. Falsch.\\
+    Gegenbeispiel: \(R=\mathbb{Z}[\sqrt{-5}]\subseteq = \{a+b\sqrt{-5}\mid a,b\in\mathbb{Z}\} \mathbb{C}\). Es gilt: \(6=2\cdot 3=(1+\sqrt{-5})(1-\sqrt{-5}).\) \(2,3,1\pm \sqrt{-5}\) sind irreduzibel, aber nicht prim. Z. B.: \(1\pm\sqrt{-5}\) ist irreduzibel, denn: \(1+\sqrt{-5}=\alpha\beta,\ \alpha,\beta\in R\).
+    (Sei \(N:\mathbb{Z}[\sqrt{-5}]\longrightarrow\mathbb{Z},\ z=z_1+z_2\sqrt{-5}\mapsto z\bar{z}=z_1^2+5z_2^2\in\mathbb{Z}\). Es gilt \(N(\alpha\beta)=N(\alpha)N(\beta)\)). \(6=N(1+\sqrt{-5})=N(\alpha\beta)=N(\alpha)N(\beta)\Rightarrow N(\alpha)\in\{1,2,3,6\}\)
+\end{remark}
+
+\begin{example}
+    \begin{enumerate}
+        \item \(\mathbb{Z},\mathbb{K}[x]\) sind Integrit\"atbereiche.
+        \item \(R[x]\) ist ein Integrit\"atbereiche, falls \(R\)  nullteilerfrei ist, denn \(\begin{cases}
+            f(x)=a_nx^n+\cdots,&a_n\not = 0\\
+            g(x)=b_mx^m+\cdots,&b_m\not = 0
+        \end{cases}\Rightarrow f(x)g(x)=a_nb_mx{n+m}+\cdots\not =0\)
+        \item \(R[x]^\times = R^\times\), falls \(R\) nullteilerfrei.
+        \item \(R=\mathbb{Z}/m\mathbb{Z}\).
+    \end{enumerate}
+\end{example}
+\begin{lemma}
+    Sei \(a\in\mathbb{Z}\) und \(\bar{a}=a+m\mathbb{Z}\in\mathbb{Z}/m\mathbb{Z}\).\begin{enumerate}
+        \item \(\bar{a}\in(\mathbb{Z}/m\mathbb{Z})^\times\Leftrightarrow \operatorname{ggT}(a,m)=1\)
+        \item \(\bar{a}\) ist Nullteiler \(\Leftrightarrow \operatorname{ggT}(a,m)>1\)
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item \begin{itemize}
+            \item \("\Rightarrow":\) \(\exists b\in\mathbb{Z}:\ ab \equiv 1(\operatorname{mod}\ m)\Rightarrow\exists c:ab=1+cm\Rightarrow 1=ab-cm\Rightarrow \operatorname{ggT}(a,m)=1\)
+            \item \("\Leftarrow":\) Euklidischer Algorithmus \(\Rightarrow \exists x,y\in\mathbb{Z}:1=xa+ym\Rightarrow xa\equiv 1(\operatorname{mod}\ m)\), d.h. \(\bar{a}^{-1} =\bar{x}\)
+        \end{itemize}
+        \item \begin{itemize}
+            \item \("\Rightarrow":\) \(\bar{a}\) Nullteiler \(\Rightarrow \bar{a}\notin R^\times\Rightarrow \operatorname{ggT}(a,m)>1\)
+            \item \("\Leftarrow":\) Sei \(d:=\operatorname{ggT}(a,m)\). Dann: \(a\cdot\frac{m}{d}=\frac{a}{d}\cdot m \equiv 0(\operatorname{mod}\ m)\ \text{bzw.}\bar{a}\cdots \overline{\left(\frac{m}{d}\right)}=\bar{0}\)
+        \end{itemize}
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    Sei $R$ ein Hauptidealring. Dann gilt:
+    $p$ ist prim $\Longleftrightarrow p$ ist irreduzibel.
+\end{theorem}
+
+\begin{definition}
+    Sei $R$ nullteilerfrei. Dann ist $R$ ein ZPE-Ring (oder faktoriell), falls gilt:
+    \begin{enumerate}
+        \item Jedes Element $a \in R \backslash\{0\}, a \notin R^{\times}$, kann man als Produkt
+        $$
+        a=c_{1} \cdots c_{n} \text { mit irreduziblen } c_{i} \in R
+        $$
+        schreiben.
+        \item (Eindeutigkeit) Falls $a=c_{1} \cdots c_{n}=d_{1} \cdots d_{m}$ mit irreduziblen Elementen $c_{i}$ und $d_{j}$, so gilt $n=m$ und (bis auf Numerierung) $c_{i} \sim d_{i}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    Jeder nullteilerfreie euklidische Ring ist ein HIR.
+\end{theorem}
+\begin{proof}
+    Wie bei \(\mathbb{Z}\).
+\end{proof}
+\begin{lemma}
+    Sei $R$ ein Hauptidealring und \(a_1,\cdots,a_n\in R\) Sei \((a_1,\cdots,a_n):= (a_1)+\cdots+(a_n)\triangleleft R\). Dann gilt: \((a_1,\cdots,a_n)=(d)\Leftrightarrow d = \operatorname{ggT}(a_1,\cdots , a_n)\). Insbesondere existiertin HIR ein ggT.
+\end{lemma}
+\begin{proof}
+    \begin{itemize}
+        \item \("\Rightarrow"\): \((a_i)\subseteq (d)\Leftrightarrow d\mid a_i,\ i = 1,\cdots ,n\) Sei \(d'\mid a_i, \ i=1,\cdots,n\Rightarrow (a_i)\subseteq (a_1)\subseteq (d')\Rightarrow (a_1,\cdots,a_n)=(d)\subseteq (d')\Rightarrow d' \mid d\).
+        \item \("\Leftarrow"\): \(d\mid a_i, \ i=1,\cdots,n\Leftrightarrow (a_i)\subseteq (d)\Rightarrow (a_1,\cdots,a_n)\subseteq (d)\) Sei \((a_1,\cdots,a_n)=(c)\Rightarrow c\mid a_i,\ i =1,\cdots,n\Rightarrow c\mid d \Leftrightarrow (d)\subseteq (c) = (a_1,\cdots , a_n)\)
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    Jeder Hauptidealring ist ein ZPE-Ring.
+\end{theorem}
+\begin{proof}
+    \begin{itemize}
+        \item \("\Rightarrow":\) breits gezeigt.
+        \item \("\Leftarrow":\) Sei \(p\mid ab,\ p\nmid a\). Z.z.\(p\mid b\).\\
+        Betrachte \((p)+(b)=(c),c\in R\Rightarrow(p)\subseteq (c)\Leftrightarrow c\mid p\Rightarrow c\in R^\times \text{ oder } c\sim p\)
+    \end{itemize}
+    %FIXME: TO complete proof/
+\end{proof}
+
+
+Grundlegend für den Beweis dieses Satzes ist das
+
+\begin{lemma}
+    Sei $R$ ein Hauptidealring. Dann wird jede aufsteigende Kette
+    $$
+    \left(a_{0}\right) \subseteq\left(a_{1}\right) \subseteq\left(a_{2}\right) \subseteq \ldots
+    $$
+    von Idealen in $R$ stationär, d.h. es gibt $n \in \mathbb{N}$, so daß $\left(a_{i}\right)=\left(a_{n}\right)$ für alle $i \geq n$.
+\end{lemma}
+\begin{proof}
+    Sei \(J:=\bigcup_{i=1}^\infty (a_i)\). Dann ist \(J\) ein Ideal! Also \(J=(a).\) Sei \(n\) so, da\ss  \(a\in(a_n)\). Dann gilt : \((a_{n+l})=(a_n),\forall l \geq 0\)
+\end{proof}

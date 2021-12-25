@@ -1,0 +1,67 @@
+\section{Ringe}
+\begin{definition}[Ring]
+    \begin{enumerate}
+        \item A ring $R$ is a set together with two binary operation $+$ and $\times$ (called addition adn multplication) satisfying the following axioms:\begin{itemize}
+            \item $(R,+)$ is an  ableian group.
+            \item $\times$ is associative: \(a\times(b\times) = (a\times b)\times c\)   for all \(a,b,c\in R\)
+            \item the distributive laws hold in \(R\): for all \(a, b,c \in R\):
+            \[(a+b)\times c =(a\times c)+b\times c\ \ \text{and }\ \ a\times(b+c) = (a\times b)+ (a\times c)\]
+        \end{itemize}
+        \item The ring $R$ is commutative if multplication is commutative.
+        \item The ring $R$ is said to have an identity (or contain a $1$) if there is an element \(1\in R\) with \[1\times a = a \times 1 = a \ \ \text{for all }\ \ a\in R\]
+        \item A subring of the ring \(R\) is a subgroup of \(R\) that is closed under multplication.
+    \end{enumerate}
+\end{definition}
+
+Following are some basic properties of ring. Proof would not be repeated here.
+
+\begin{proposition}
+    Let \(R\) be a ring. then
+    \begin{itemize}
+        \item \(0a =a0=0\) for all \(a \in R\).
+        \item \((-a)b=a(-b)=-(ab)\) for all \(a,b\in R\).
+        \item \((-a)(-b) = ab \) for all \(a,b\in R\).
+        \item If $R$ has an identity, then the identity is unique and \(-a = (-1)a\).
+    \end{itemize}
+\end{proposition}
+
+\begin{definition}
+    \begin{enumerate}
+        \item A nonzero element a of \(R\) is called zero divisor if there is a nonzero element \(b\) in \(R\) such that either \(ab = 0\) or \(ba = 0\).
+        \item Assume \(R\) has an identity \(1\not = 0\). An element \(u\) of \(R \) is called a unit in \(R\) if there is some \(v\) in \(R \) such that \(uv =vu = 1\). The sets of units in \(R\) is denoted \(R^\times\)
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    In this terminology a field is a commutative ring \(F\) with identity \(1 \not = 0\) in which every nonzero element is a unit, i.e. \(F^\times = F - \{0\}\)
+\end{remark}
+
+\begin{definition}[Integral domain]
+    A commutative ring with identity \(1 \not = 0\) is called an integral domain if it has no zero divisors.
+\end{definition}
+\begin{remark}
+    Assume \(a,b,b\) are elements of any ring with \(a\) not a zero divisor. If \(ab=ac\), then either \(a = 0\) or \(b = c\).
+\end{remark}
+
+\begin{remark}
+    Here should be the definition of ringhomomorphism and some basic properties. It is very similar to group. I am not going to write everything down here. See Dummit if necessary
+\end{remark}
+
+\begin{definition}[Ideal]
+    Let \(R\) be a ring, let \(I\) be a subset of \(R\) and let \(r \in R\).
+    \begin{enumerate}
+        \item \(rI = \{ra\mid a \in I\}\) and \(Ir = \{ar \mid a\in I\}\)
+        \item A subset \(I\) of \(R\) is a left ideal of \(R\) if\begin{enumerate}
+            \item \(I\) is a subring of \(R\), and
+            \item \(I\) is cloed under left multplication by elements from R, i.e. \(rI\subset I\) for all \(r\in R\)   
+        \end{enumerate}
+        Right ideal is similar.
+        \item A subset \(I\) that is both a left and a right ideal is called an ideal of \(R\).
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    Let \(R\) be a ring and let \(I\) be an ideal of \(R\). Then the (additive) quotient group \(R/I\) is a ring under the binary operation:\[(r+I) + (s+I) = (r+s)+I \ \ \ \ (r+I) \times (s+I) = (rs)+I\] for all \(r,s\in R\). Conversely, if \(I\) is any subgroup such that the above operations are well defined, then \(I\) is an ideal of \(R\).
+\end{remark}
+
+TODO:IOS SATZ VON RING.\\
+\subsection{Euklidische Ringe}
