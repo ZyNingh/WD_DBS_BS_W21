@@ -42,17 +42,38 @@ Given $g$ in $G$ and $x$ in $X$ with $ g\cdot x=x$, $g\cdot x=x$ , it is said th
     The action of $G$ on $X$ is free iff all stabilizer are trivial.
 \end{remark}
 
+\begin{lemma} 
+    Let $G\times X \to X$ a action of $G$ on $X$. Then \[|X|=\sum_{B\backslash X} |B|\]
+\end{lemma}
 
-\begin{lemma}
+\begin{lemma} \label{Bkg}
     Let $G\times X \to X$ a action of $G$ on $X$. For every $x\in X$ the function $\varphi : G \to X, g\mapsto gx $ can be reduced to a isomorphism $G/G_x\simeq Gx$, where $G/G_X$ is set of left cosets. In particular it holds $\ord(Gx) = G : Gx$
 \end{lemma}
 \begin{proof}
     It holds \(\varphi (g) = \varphi (h) \Leftrightarrow gx = hx \Leftrightarrow h^{-1}gx =x \Leftrightarrow h^{-1} g \in G_x \Leftrightarrow gG_x= hG_x\)\\
-    Also $\varphi$ is a injective function $G \to X, g\mapsto $. Obvioulsy is $\varphi $ surjective.
+    Also $\varphi$ is a injective function $G \to X, g\mapsto $. Obvioulsy is $\varphi $ surjective.\\
+    Following is something more deteailed.[Fraleigh 16.16 Theorem]
+    \begin{itemize}
+        \item We define a one-to-one map \(\phi\) from \(Gx\) onto the collection of left costes of \(G_x\) in \(G\). i.e. \(\phi(x_1)=g_1G_x\)
+        \item We need to show that the function ist well defined, injective and surjective.(See the book for detail, it is just calculation).
+        \item If \(|G|\) is finite, then the equation \(|G| = |G_x|(G:G_x)\) shows that \(|Gx| = (G:G_x)\) is a divisor of \(|G|\).
+    \end{itemize}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[Bahnengleicung] \label{Bg}
     $$|X| = \sum_{i=1}^r |Gx_i| = \sum_{i=1}^r |G:Gx_i|$$
 \end{theorem}
+\begin{proof}
+    \(X\) is disjoint union of all orbit \(B_i\) with \(B_i = G_{x_i}\). Then holds \(|X| = \sum_{i=1}^r |Gx_i| = \sum_{i=1}^r |G:Gx_i|\) directly by lemma.
+\end{proof}
 
-FIXME: SHENME YA
+\begin{lemma}
+    Let $G\times X \to X$ a action of $G$ on $X$. If \(x\in X,  g\in G\), then \(G_{gx} = gG_xg^{-1}\)
+\end{lemma}
+\begin{proof}
+    \(h\in G_{gx}\Leftrightarrow hgx = gx \Leftrightarrow g^{-1}hgx =x\Leftrightarrow g^{-1}hg \in G_x\Leftrightarrow h\in gG_xg^{-1}\)
+\end{proof}
+
+\begin{remark}
+    In some skript man can find auch Klassengleichung. It is a special case of Bahnengleichung with respect conjugationfunction and center.
+\end{remark}

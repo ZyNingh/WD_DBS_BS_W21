@@ -1,0 +1,38 @@
+\subsection{\(p\)-Gruppe}
+\begin{definition}[\(p\)-group]
+    Let \(G\) be a group and let \(p\) be a prime.
+    \begin{enumerate}
+        \item A group of order \(p^\alpha\) for some \(\alpha \geq 1\) is called a \(p\)-group. Subgroup of \(G\) which are \(p\)-groups are called \(p\)-subgroup.
+        \item If \(G\) is a group of order \(p^\alpha m\), where\(\not\mid m\), then a subgroup of order \(p^\alpha\) is called a Sylow \(p\)-subgroup og \(G\).
+        \item The set of Sylow \(p\)-subgroup of \(G\) will be denoted by \(\mathrm{Syl}_p(G)\) and the number of Sylow \(p\)-subgroup will be denoted by \(n_p(G)\). 
+    \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+    Let \(G\) be a group of order \(p^n\) and let \(X\) be a finite \(G\)-set. Then \(|X| =|X_G|\mod p\).
+\end{lemma}
+\begin{proof}
+    There may be one-element orbit in \(X\). Let \(X^G = \{x\in X\mid gx = x\ \ \forall a\in G\}\). Thus \(X^G\) is precisely the union of the one-element orbits in \(X\). Let us suppose there are \(s\) one-element orbits, where \(0\leq s\leq r\). Then \(|X^G| = s\)(reordering the \(x_i\) if necessary), then we may rewrite Eq. in \ref{Bg}\[|X| = |X^G| + \sum_{i = s+1}^r |G{x_i}|\]
+    Also we know \(|Gx_i\) divides \(|G|\) by Lemma \ref{Bkg}. Consequently \(p\) divides \(|Gx_i\) for \(s+1\leq i \leq r\). So \(|X|-|X^G|\) is divisible by \(p\), so \(|X|=|X^G|\mod p\)
+\end{proof}
+
+\begin{theorem}\label{centerbig}
+    Let \(G\) be a group of order \(p^n\). Then \(Z(G) \not =1\) and there is a central element of order \(p\) (\(x\) is of order \(p^l\), then \(x^{p^{l-1}}\) has order \(p\)).
+\end{theorem}
+\begin{proof}
+    Consider conjugation an action of \(G\) on \(G\). Then \(G\) is fixed point iff \(g\) commutes with all element in \(G\) (i.e. \(g\in Z(G)\). Also \(e\in |Z(G)| = |G| = 0 \mod p \), so \(|Z(G)| \geq p\). 
+\end{proof}
+
+\begin{theorem}[Cauchy's Theorem]
+    Let \(p\) be a prime. Let \(G\) be a finite group and let \(p\) divide \(|G|\). Then \(G\) has an element of order \(p\) and, Consequently, a subgroup of order \(p\)    
+\end{theorem}
+\begin{remark}
+    Herr S. didn't mention this in lecture. But I think it would be better if we know it.
+\end{remark}
+
+\begin{theorem}
+     Let \(p\) Be a prime, and \(G\) a \(p\)-group of order \(p^k\). There is a sequence of subgroup\[\{e\}=G_0<G_1\cdots <G_n =  G\ \ \text{with}\ \ |G_i|=p^i \wedge \forall i:\ \trianglelefteq G \]
+\end{theorem}
+\begin{proof}
+    We can use the induction on natural number here. For \(k = 1\) it is trivial. Let \(k>1\). By Theorem \ref{centerbig} we can find a central element \(a\) of order \(p\). The quotient group \(\bar{G} = G / (a)\) is of order \(p^{k-1}\).
+\end{proof}

@@ -1,0 +1,75 @@
+
+\section{\"Ubungsblatt 2}
+Thema: \textbf{Schl\"ussel, SQL-DDL}
+\subsection{Aufgabe 2-1}
+\subsubsection{a)}
+    Einf\"ugen von Duplikaten wird verweigert.
+\subsubsection{b)}
+    Erm\"glicht effizientere \"Ubungspr\"ufung von Sch\"ussel/Fremdsch\"usselbeziehung.
+\subsubsection{c)}
+    Zu jedem Attributwert in abh\"angiger Relation muss auch entsprechenden Schl\"usselwert in referenzierter Relation existieren. (No dangling references)
+\subsubsection{d)}
+    \begin{itemize}
+        \item Nein, Referenzielle Integrit\"at verletzt.
+        \item Nein, Schl\"usseleigenschaft verletzt.
+        \item Gut.
+    \end{itemize}
+
+\subsection{Aufgabe 2-2}
+\begin{verbatim}
+a)
+create table L
+(
+    lnr integer primary key,
+    lname varchar(100) not null,
+    sitz varchar(100)
+);
+
+create table T
+(
+    tnr integer primary key,
+    tname varchar(100) not null,
+    farbe varchar(100),
+    gewicht float,
+    preis decimal(8,4) check (preis > 0)
+);
+
+create table P
+(
+    pnr integer primary key,
+    pname varchar(100) not null,
+    ort varchar(100)
+);
+
+
+create table LTP
+(
+    lnr integer,
+    tnr integer,
+    pnr integer,
+    menge integer check (menge > 0),
+    primary key (lnr, tnr, pnr),
+    foreign key (lnr) references L(lnr),
+    foreign key (tnr) references T(tnr),
+    foreign key (pnr) references P(pnr)
+)
+
+b)
+alter table P add
+(
+    status integer default 5
+)
+
+c)
+alter table T modify gewicht float check(gewicht >0)
+
+d)
+alter table P drop ort
+
+e)
+drop table LTP;
+drop table L;
+drop table T;
+drop table P
+
+\end{verbatim}

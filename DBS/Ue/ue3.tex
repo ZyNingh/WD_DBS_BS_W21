@@ -1,0 +1,55 @@
+\section{\"Ubungsblatt 3}
+\subsection{Aufgabe 3-1}[Natural Join]
+\[R \bowtie S \stackrel{\text { def }}{=}\left\{r s_{\left[C_{1}, \ldots, C_{o}\right]} \mid r \in R \wedge s \in S \wedge r_{\left[B_{1}, \ldots, B_{m}\right]}=s_{\left[B_{1}, \ldots, B_{m}\right]}\right\}\].
+Da \(r_{\left[B_{1}, \ldots, B_{m}\right]}=s_{\left[B_{1}, \ldots, B_{m}\right]} \Leftrightarrow r=s:\)
+\[R \bowtie S = \left\{r\mid r \in R \wedge s \in S \wedge r =s \right\}\]
+Und r = s:
+\[R \bowtie S = \left\{r\mid r \in R \wedge r \in S \right\} = R \cap S\]
+\subsection{Aufgabe 3-2}[Ableitung des Quotient-Operators]
+$$
+R \div S \stackrel{!}{=} \Pi_{R-S}(R)-\Pi_{R-S}\left(\left(\Pi_{R-S}(R) \times S\right)-R\right)
+$$
+Beweis:
+1) $R \div S \subseteq \Pi_{R-S}(R):$ trivial
+2) z.z.: $\forall t \in \Pi_{R-S}(R)$ gilt: $t \in \Pi_{R-S}\left(\left(\Pi_{R-S}(R) \times S\right)-R\right) \Leftrightarrow t \notin R \div S$
+$$
+\begin{aligned}
+\text { Sei } t=\left(t_{1}, \ldots, t_{i}\right) \in \Pi_{R-S}(R), \text { dann gilt: } & \\
+& t \in \Pi_{R-S}\left(\left(\Pi_{R-S}(R) \times S\right)-R\right) \\
+& \Leftrightarrow \quad \exists x=\left(x_{i+1}, \ldots, x_{n}\right) \in S: t x=\left(t_{1}, \ldots, t_{i}, x_{i+1}, \ldots, x_{n}\right) \in\left(\Pi_{R-S}(R) \times S\right)-R \\
+& \Leftrightarrow \quad \exists x \in S: t x \in \Pi_{R-S}(R) \times S \wedge t x \notin R \\
+& \Leftrightarrow \quad \exists x \in S: t \in \Pi_{R-S}(R) \wedge t x \notin R \\
+& \Leftrightarrow \quad \neg \forall x \in S: t \notin \Pi_{R-S}(R) \vee t x \in R \\
+& \Leftrightarrow \quad t \notin \Pi_{R-S}(R) \vee \neg \forall x \in S: t x \in R \\
+& \stackrel{\text { Def. }}{\Leftrightarrow} \quad t \notin R \div S
+\end{aligned}
+$$
+\subsection{Aufgabe 3-3}[Anfragen in relationaler Algebra]
+\subsubsection{a)}
+\[\pi_{\text {pname }}\left(\sigma_{\text {ort }=^{\prime} B E R L I N^{\prime}}(P)\right)\]
+\subsubsection{b)}
+$$
+\begin{gathered}
+\pi_{\text {tname }}\left(\sigma_{\text {P.ort }}=^{\prime} B E R L I N^{\prime} \wedge P . p n r=L T P . p n r \wedge T . t n r=L T P . t n r(P \times(T \times L T P))\right) \\
+\pi_{\text {tname }}\left(\sigma_{P . o r t=^{\prime} B E R L I N^{\prime}}(P \bowtie(L T P \bowtie T))\right)
+\end{gathered}
+$$
+\subsubsection{c)}
+$$\pi_{\text {tname }, \text { tnr }}\left(\sigma_{\text {T.tnr }=L T P . t n r \wedge L . l n r=L T P . l n r \wedge L . \operatorname{lname}=^{\prime} S C H U L Z \prime}(T \times(L \times L T P))\right)$$
+$$\pi_{\text {tname,tnr }}\left(\sigma_{\text {L.lname }=^{\prime} S C H U L Z^{\prime}}(T \bowtie(L \bowtie L T P))\right)$$
+\subsubsection{d)}
+\[    \left.\pi_{\text {lname }}\left(\sigma_{\text {L.sitz= }^{\prime} \text { MESCHEDE }^{\prime} \wedge L . \text { lnr }=L T P . \text { lnr } \wedge P . p n r=L T P . p n r \wedge\text { P.ort }=^{\prime} \text { WETTER }^{\prime}}(L \times P \times L T P)\right)\right) \]
+\[   \pi_{\text {lname }}\left(\sigma_{L . s i t z=^{\prime} M E S C H E D E^{\prime} \wedge P . o r t=^{\prime} W E T T E R^{\prime}}(L \bowtie P \bowtie L T P)\right)     \]
+\subsubsection{e)}
+\[\pi_{p n r, o r t}\left(\sigma_{\text {T.farbe }=^{\prime} R O T^{\prime} \wedge T \text {.gewicht }>5
+\wedge T . t n r=L T P . t n r \wedge L T P . p n r=P . p n r}
+(T \times(L T P \times P))\right)\]
+$$
+\pi_{p n r, o r t}\left(\sigma_{T \text {.farbe }=^{\prime} R O T^{\prime} \wedge T \text {.gewich } t>5}(T \bowtie(L T P \bowtie P))\right)
+$$
+\subsection{Aufgabe 3-4}[Anfragen mit dem Quotient-Operator]
+\begin{enumerate}
+    \item Nummern der Lieferanten, die an mind. ein Projekt jedes rote Teil in gleicher Menge liefern
+    \item Nummern der Lieferanten, die an mind. ein Projekt jedes rote Teil liefern (L1, L5)
+    \item Nummern der Lieferanten, die jedes rote Teil liefern
+\end{enumerate}
