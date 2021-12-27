@@ -1,0 +1,64 @@
+\subsection{Quantoren udn Subqueries in SQL}
+\begin{example}[Subquery]
+    \begin{verbatim}
+        SELECT * FROM Kunde 
+        WHERE EXISTS (SELECT ... FROM ... WHERE)
+    \end{verbatim}
+\end{example}
+\begin{remark}
+    \begin{itemize}
+        \item In where-Klausel der Subquery auch Zugriff aud Relationen/Attribute der Hauptquery.
+        \item Eindeutigkeit ggf. durch Aliasnamen f\"ur Relation. \begin{verbatim}
+            SELECT * FROM kunde konstante1
+            WHERE EXISTS ( SLEECT * 
+                           FROM Kunde k2
+                           WHERE k1.Adr = K2.Adr AND ...
+                         )
+        \end{verbatim}
+        \item Existenz-Quantor ist realisiert mit dem Schl\"usselwort EXISTS.
+        \item Term TRUE gdw. Ergebnis der Subquery nicht leer.
+    \end{itemize}
+\end{remark}
+
+Es gibt keine direkt Unterst\"utzung in SQL von Allquantor. Aber es ist \"aquivalent \(\forall x:\varphi(x) \Leftrightarrow \neg \exists : \neg \neg \varphi(x)\). Also Notation in SQL:
+\begin{verbatim}
+    ... WHERE NOT EXISTS (SELECT ... FROM ... WHERE NOT ...)
+\end{verbatim}
+
+Direkt Subquery:\\
+An jeder Stelle in der select- und where-Klausel, an der 
+ein konstanter Wert stehen kann, kann auch eine Subquery 
+(select...from...where...) stehen.
+\begin{example}
+    \begin{verbatim}
+        SELECT Preis,
+               Preis * (SELECT Kurs FROM Devisen
+                        WHERE DName = 'US$' ) as USPreis
+        FROM Waren Where ...
+    \end{verbatim}
+\end{example}
+
+\begin{remark}
+    Es gibt weitere Quantoren bei Standard-Vergleichung in WHERE.
+    \begin{verbatim}
+        - Ai = ALL (SELECT ... FROM ... WHERE ...)  // Allquantor
+        - Ai = ANY (SELECT ... FROM ... WHERE ...)  // Ex.quantor
+        - Ai = SOME (SELECT ... FROM ... WHERE ...) // Ex.quantor
+    \end{verbatim}
+    Es bedeutute :\(A_i \Theta \  \text{all}\ (\text{Subquery})\equiv \{...\mid \forall t \in \text{Subquery:}A_i \Theta t\}, \Theta\in\{=,<,\leq,>,\geq,<>\}\)
+\end{remark}
+
+\begin{remark}
+    Es kann Subquery mit IN sein.
+    \begin{verbatim}
+        A_i [NOT] in ...
+    \end{verbatim}
+\end{remark}
+
+\begin{example}Typische Fomr der Subquery:
+    \begin{verbatim}
+        SELECT ... FROM ... WHERE EXISTS (SELECT * FROM ...)
+        SELECT ... FROM ... WHERE A <= ALL (SELECT B FROM ...)
+        ... WHERE A <= (SELECT B FROM ... WHERE Schluessel = ...)
+    \end{verbatim}
+\end{example}

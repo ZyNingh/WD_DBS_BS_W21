@@ -1,0 +1,41 @@
+\subsection{Realtionen-Kalk\"ul}
+\begin{itemize}
+    \item Relatione Algebra ist prozedurale Sprache:\\
+    Ausdruck gibt an, unter Benutzung welcher Operation deas Ergebnis berechnet werden soll
+    \item Relationen-Kalk\"ul ist deklarative Sprache:\\
+    Ausdruck bereischreibt, welche Eigenschaft die Tupel der Ergebnisrelation haben m\"ussen ohne eine Berechnungsprozedur daf\"ur anzugeben.
+    \item Es gibt zwei vershiedene Ans\"atze:
+    \begin{itemize}
+        \item Tupelkalk\"ul: Variable sind vom Typ Tupel.
+        \item Breichskalk\"ul: Variablen haben einfachen Typ.
+    \end{itemize}
+\end{itemize}
+\begin{remark}
+    Hier gibt es eine relativ lange Teil \"uber Mahtematik. Ich habe gar kein Interesse daran. Etwas \"uber Formel, Sytax, Sematik, Interpretation(Belegung von Variablen)
+\end{remark}
+
+\subsubsection{Tupelkalk\"ul}
+Man arbeitet mit \begin{itemize}
+    \item Tupelvaribalen:  \(t\)
+    \item Formeln: \(\varphi(t)\)
+    \item Ausdr\"ucken: \(\{t\mid \varphi(t)\}\)
+\end{itemize}
+\begin{definition}[Definitertes Schema von Tupelvaribalen]
+    \begin{itemize}
+        \item Schema(\(T\)) = (\(A_1:D_1,A_2:D_2,\cdots\))
+        \item Schema(\(T\)) = \(R\).
+    \end{itemize}    
+\end{definition}
+\begin{remark}
+    \(t[A]\) oder \(t.A\) f\"ur einen Attributnamen \(A\in \)Schema(\(t\)).
+\end{remark}
+
+\subsubsection{Bereichskalk\"ul}
+\begin{definition}
+    Ein Ausdruck hat die Form:
+    \[\{x_1,x_2,\cdots,\mid \varphi(x_1,x_2,\cdots)\}\]
+    Atome haben die Form:\begin{itemize}
+        \item \(R_1(x_1,x_2,\cdots)\): Tupel \((x_1,x_2,\cdots)\) tritt in Relation \(R\) auf.
+        \item x\(\Theta\): \(x,y\) Bereichsvariblen bzw. Konstant.\(\Theta \in \{=,<,\leq,>,\geq,\not =\}\)
+    \end{itemize}
+\end{definition}
