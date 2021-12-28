@@ -62,3 +62,84 @@ ein konstanter Wert stehen kann, kann auch eine Subquery
         ... WHERE A <= (SELECT B FROM ... WHERE Schluessel = ...)
     \end{verbatim}
 \end{example}
+
+\subsection{Sortieren, Gruppieren und Views in SQL}
+\subsubsection{Sortieren}
+In SQL mit ORDER BY A1, A2, ...\\
+Nach Attribut kann man ASC f\"ur aufsteigend(Default) order DESC f\"ur absteigend angeben.
+\subsubsection{Aggregation}
+Aggregation berechnet Eigenschaft ganzer Tupel-Menge. Es gibt folgendes Aggregatfunktionen in SQL:\begin{itemize}
+    \item count
+    \item sum
+    \item avg
+    \item max
+    \item min
+\end{itemize}
+\begin{remark}
+    \begin{itemize}
+        \item NULL-Werte werden ignoriert(auch bei count).
+        \item Eine Duplikatelimination kann erzwungen werden\begin{itemize}
+            \item count(distinct KNname) z\"ahlt verschiedene Kunden
+            \item count(all KName) z\"ahlt alle Eint\"age (ausser NULL)
+            \item count(KName) ist identisch mit count(all KName)
+            \item count(*) z\"ahlt die Tupel des Anfrageergebnisses
+        \end{itemize}
+    \end{itemize}
+\end{remark}
+\subsubsection{Gruppierung}
+Syntax in SQL:
+\begin{verbatim}
+    SELECT          ...
+    FROM            ...
+    [WHERE          ...] 
+    [group by A1,A2,...
+     [HAVING        ...]]
+    [ORDER BY       ...] 
+\end{verbatim}
+\subsubsection{View}
+View ist eine Virtuelle Relation, die f\"ur den Benutzer aus wie eine Relation sieht. Aber die Relation ist nicht real existent/gespeichert. Definition und L\"oschen in SQL:
+\begin{verbatim}
+    CREATE [OR REPLACE] view VName [(A1,A2,...)] AS SELECT ...
+    drop view VName
+\end{verbatim}
+\begin{remark}
+    \begin{itemize}
+        \item Automatisch sind in dieser View alle Tupel der Basisrelation, die die Selecktionsbedingung erf\"ullen.
+        \item In Wirklichkeit wird lediglich die View-definition in die Anfrage eingesetzt und dann ausgewertet.
+        \item Bei Updates in der Basisrelation \"andert sich auch die virtuelle Relation. Umgekehrt k\"onnen (mit Einschr\"ankungen) auch \"Anderungen an der View durchgef\"uhrt werden, die sich auf die Basisrelation auswirken.
+        \item Views sind ein wichtiges Strukturierungsmittel f\"ur Anfragen und die gesamte Datenbank.
+        \item Selektion, Projektion, Kreuzprodkt, Join, Vereinigung, Differenz, Schnitt, Gruppieren, Aggregation und Subqueries sind erlaubt in VIEW.
+        \item Sortieren ist nicht erlaubt.
+    \end{itemize}
+\end{remark}
+
+FIXME: Zhe yi duan shi sha ya .
+
+\subsubsection{Rechtvergabe}
+Syntax:\begin{verbatim}
+    GRANT Rechteliste
+    ON Relation         //bzw. View
+    TO Benutzerliste
+    [with grant option]
+\end{verbatim}
+\begin{remark}
+    M\"oglichkeit:\begin{itemize}
+        \item Rechteliste: \begin{itemize}
+            \item ALL [privileges]
+            \item SELECT, INSERT, DELETE (mit Kommas sep.)
+            \item UPDATE (optional in Klammern: Attributnamen)
+        \end{itemize}
+        \item Benutzerliste:\begin{itemize}
+            \item Benutzernamen (mit Passwort identifizert)
+            \item TO PUBLIC
+        \end{itemize}
+        \item R\"ucknahme von Rechten:
+        \begin{verbatim}
+            REVOKE Rechteliste
+            ON Relation
+            FROM Benutzerliste
+            [RESTRICT] Abbruch, falls Recht bereits weitergegeben
+            [CASCADE] ggf. Propagierung der Revoke-Anweisung
+        \end{verbatim}
+    \end{itemize}
+\end{remark}
