@@ -1,0 +1,44 @@
+\subsection{Aufl\"osbare Gruppe}
+\begin{definition}[Derived series]
+    This construction can be iterated:
+    \[G^{(0)}:=G\]
+    \[G^{(n)}:=[G^{(n-1)},G^{(n-1)}]\] 
+    The groups \[G^(2),G^(3),...\] are called the second derived subgroup, third derived subgroup, and so forth the descending normal series \(\cdots\unlhd G^{(2)}\unlhd G^{(1)}\unlhd G^{(0)} = G\) is called derived series.
+\end{definition}
+
+\begin{definition}
+    A group is called solvable, if its derived series, the descending normal series, where every subgroup is the commutator subgroup of the previous one, eventually reaches the trivial subgroup of \(G\).
+\end{definition}
+\begin{remark}
+    In many book there is equivatent definition: A group \(G\)  solvable if it has a subnormal series whose factor groups (quotient groups) are all abelian, that is, if there are subgroups $1 = G_0 < G_1 < \cdots < G_k = G$ such that $G_{j-1}$ is normal in $G_j$, and $G_j/G_{j-1}$ is an abelian group, for $j = 1, 2, ..., k$. A proof to this could be found in Dummit Sec. 6.1 Theorem 9.
+\end{remark}
+
+\begin{proposition}
+    Let \(G\) and \(K\) be groups, let \(H\) be a subgroup of \(G\) and let \(\varphi: G\to K\) be a surjective homomorphism.\begin{itemize}
+        \item \(H^{(i)}\leq G^{(i)}\) for all \(i\geq 0\). In particular, if \(G\) is solvable, then so is \(H\), i.e. subgroups of solvable groups are solvable (and the solvable length of $H$ is less than or equal to the solvable length of $G$). .
+        \item \(\varphi(G^{(i)}) = K^{(i)}\). In particular, homomorphic images and quotient groups of 
+        solvable groups are solvablee (of solvable length less than or equal to that of the 
+        domain group).
+        \item If \(N\) is normal in \(G\) and both \(N\) and \(G/N\) are solvable then so is \(G\).    
+    \end{itemize}
+\end{proposition}
+
+\begin{theorem}
+    All \(p\)-Gruppe is solvable.
+\end{theorem}
+
+\begin{theorem}
+    Let \(p,q\) be prime with \(p<q\). Group of order \(pq\) is solvable (for \(p = q\) it is even abelian).
+\end{theorem}
+
+\begin{proof}
+    FIXME:: BUHUI
+\end{proof}
+
+\begin{theorem}
+    Let \(p,q,r\) be prime with \(p<q<r\). Group of order \(pqr\) is solvable.
+\end{theorem}
+
+\begin{proof}
+    FIXME:: BUHUI
+\end{proof}
