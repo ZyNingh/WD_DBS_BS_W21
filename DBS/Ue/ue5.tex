@@ -1,0 +1,184 @@
+\section{\"Ubungsblatt 5}
+\subsection{Aufgabe 5-1}
+\subsubsection{a)}
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = (Nanme : String)
+    { t | \exists l \in Lieferant : 
+    t.Name = l.Name \wedge l.Land = 'Sachsen'}
+    Or,
+    Schema(l) = Schema(Lieferant)
+    {[l.Name] | l \in Lieferant \wedge l.Land = 'Sachsne'} 
+    Bereichskalkül:
+    { n | \exists nr, st, la : 
+    Lieferant(nr, n, st, la) \wedge la = 'Sachsen'}
+    Or,
+    { n | Lieferant(_, n, _, 'Sachsen')}
+\end{verbatim}
+
+\subsubsection{b)}
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = (Nummer : Integer, Name : String, Bestand : Integer, Preis: Decimal)
+    { t | (\exists ar \in Artikel, ab \in Abteilung)
+        (t.Nummer = ar.Nummer \wedge t.Name = ar.Name \wedge
+        t.bestand = ar.Bestand \wedge t.Preis = ar.Preis
+        ar.Abteilung = ab.Nummer \wedge ab.Name = 'Eletronik; ) }
+    Or,
+    Schema(ar) = Schema(Artikel)
+    { [ar.Nummer, ar.Name, ar.Bestand, ar.Preis] |
+      Artikel(ar) \wedge (\exists ab \in Abteilung:ar.Abteilung  = ab.Nummer
+      \wedge ab.Nummer \wedge ab.Name = 'Eletronik')}
+    Bereichskalkül:
+    { nr, na, be, pr | \exists abNr:
+      Artikel(nr, na, abNr, pr, be, _) \wedge
+      Abteilung(abNr, 'Eletronik', _, _, _)}
+\end{verbatim}
+
+\subsubsection{c)}
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = (Name : String, Preis : Decimal)
+    { t | (\exists art \in Artikel, abt \in Abteilung, f \in FIliale)
+     (t.Name = art.Name \wedge t.Preis = art.Preis \wedge 
+     art.Abteilung = abt.Nummer \wedge abt.FIliale = f.Nummer \wedge
+     f.Stadt = 'Hamburg')}
+    Or,
+    Schema(art) = Schema(Artikel)
+    { [art.Name, art.Preis] | Artikel(art) \wedge
+      (\exists abt \in Abteilung, f \in Filiale)
+      (art.Abteilung = abt.Nummer \wedge abt.Filiale = f.Nummer \wedge
+      f.Stadt = 'Hamburg' ) }
+    Bereichskalkül:
+    { na, pr | \exists abtNr, filNt : 
+      Artikel(_, na, abtNr, pr, _, _) \wedge
+      Abteilung(abtNr, _, filNr, _, _) \wedge
+      Filiale(filNr, 'Hamburg', _) }
+\end{verbatim}
+
+\subsubsection{d)}
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = (AName : String, LName : String, Geburtsjahr : Integer)
+    { t | (\exists abt \in Abteilung, ang \in Angestellter : 
+     t.AName = abt.Name\wedge t.Lname = ang.Name \wedge
+     t.Geburtsjahr = ang.Geburtsjahr \wedge
+     abt.Leiter = ang.Nummer) }
+    Or,
+    Schema(abt) = Schema(Abteilung)
+    Schema(ang) = Schema(Angestellter)
+    { [abt.Name, ang.Name, ang. Geburtsjahr] | 
+      Abteilung(abt) \wedge Angestellter(ang) \ wedge
+      abt.Leiter = ang.Nummer }
+    Bereichskalkül:
+    { aname, lname, geb | \exists lnr : 
+      Abteilung(_, aname, _, _, lnr) \wedge
+      Angestellter(lnr, lname, _, _, geb, _)}
+\end{verbatim}
+
+\subsubsection{e)}
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = (Artikel)
+    { art | Artikel(art) \wedge
+      (\exists an \in Angestellter, ab \in Abteilung, v \in Verkauf :
+      art.Nummer = v.Artikel \wedge v.Abteilung = ab.Nummer \wedge
+      ab.Leiter = an.Nummer \wedge
+      an.Nummer = 'Edgar F. Codd' \wedge an.Geburtsjahr = 1923 ) }
+
+    Bereichskalkül:
+    { nr, na, abt, pr, be, l | \exists abtNr, lnr :
+      Artikel(nr, na, abt, pr, be, l) \wedge
+      Verkauf(_, _, abtNr, nr, _, _, _) \wedge 
+      Abteilung(abtNr, _, _, _, lnr) \wedge
+      Angestellter(lnr, 'Edgar F. Codd', _, _, 1923, _) }
+\end{verbatim}
+
+\subsection{Aufgabe 5-2}
+\subsubsection{a)}
+\[\sigma_{A=x}(R(A,B,C))\]
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = Schema(R)
+    { t | R(t) \wedge t.A = x }
+
+    Bereichskalkül:
+    { a, b, c | R(a,b,c) \wedge a = x}
+\end{verbatim}
+
+\subsubsection{b)}
+\[\Pi_{A,B}(R(A,B,C))\]
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = (A : dom(R.A), B : dom(R.b))
+    { t | \exists r \in R : (t.A = r.A \wedge t.B = r.B)}
+
+    Bereichskalkül:
+    { a, b | \exists c : R(a,b,c)}
+\end{verbatim}
+
+\subsubsection{c)}
+\[R(A,B,C)\bowtie S(C,D,E)\]
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = (A : dom(R.A), B : dom(R.B), C : dom(R.C), D : dom(S.D), E : dom(S.E))
+    { t | \exists r \in R, s \in S: (t.A = r.A \wedge
+    t.B = r.B \wedge t.C = r.C \wedge t.D = s.D \wedge
+    t.E = S.E \wedge r.C = s,C)}
+
+    Bereichskalkül:
+    { a, b, c, d, e | R(a,b,c) \wedge S(c,d,e)}
+\end{verbatim}
+
+\subsubsection{d)}
+\[R(A,B,C)\cup S(A,B,C)\]
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = Schema(R)
+    { t | R(t) \vee S(t)}
+    Bereichskalkül:
+    { a, b, c | R(a,b,c) \vee S(a,b,c)}
+\end{verbatim}
+
+\subsubsection{e)}
+\[R(A,B,C)\cap S(A,B,C)\]
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = Schema(R)
+    { t | R(t) \wedge S(t)}
+    Bereichskalkül:
+    { a, b, c | R(a,b,c) \wedge S(a,b,c)}
+\end{verbatim}
+
+\subsubsection{f)}
+\[R(A,B,C) - S(A,B<C)\]
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = Schema(R)
+    { t | R(t) \wedge \neg S(t)}
+    Bereichskalkül:
+    { a, b, c | R(a,b,c) \wedge \neg S(a,b,c)}
+\end{verbatim}
+
+\subsubsection{g)}
+\[R(A,B,C)\times S(D,E,F)\]
+\begin{verbatim}
+    Tupelkalkül:
+    Schema(t) = (A : dom(R.A), B : dom(R.B), C : dom(R.C),
+     D : dom(S.D), E : dom(S.E), F : dom(S.F))
+    { t | \exists r \in R, s \in S: (t.A = r.A \wedge 
+    t.B = r.B \wedge t.C = r.C \wedge t.D = s.D \wedge
+    t.E = s.E \wedge t.F = s.F)}
+    Bereichskalkül:
+    { a, b, c, d, e, f | R(a,b,c) \wedge S(d,e,f)}
+\end{verbatim}
+
+\subsubsection{h)}
+\[R(A,B) \div S(A)\]
+\begin{verbatim}
+    Tupelkalkül:
+    { t | \forall s \in S \exists r \in R: s.A = r.A \wedge
+     t.B = r.B}
+    Bereichskalkül:
+    { b | \forall a: S(a) \Rightarrow R(a,b)}
+\end{verbatim}
