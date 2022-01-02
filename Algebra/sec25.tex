@@ -23,7 +23,7 @@ We just define left group action here. Right group action is quite similar.(Actu
 \end{remark}
 
 \begin{definition}[Bahn or orbit]
-    Consider a group $G$ acting on a set $X$. The orbit of an element $x$ in $X$ is the set of elements in $X$ to which $x$ can be moved by the elements of $G$. The orbit of $x$ is denoted by $Gx$. $$G\cdot = \{g\cdot x :g \in G\}$$
+    Consider a group $G$ acting on a set $X$. The orbit of an element $x$ in $X$ is the set of elements in $X$ to which $x$ can be moved by the elements of $G$. The orbit of $x$ is denoted by $Gx$. $$G\cdot x = \{g\cdot x :g \in G\}$$
 \end{definition}
 
 \begin{remark}
@@ -61,10 +61,10 @@ Given $g$ in $G$ and $x$ in $X$ with $ g\cdot x=x$, $g\cdot x=x$ , it is said th
 \end{proof}
 
 \begin{theorem}[Bahnengleicung] \label{Bg}
-    $$|X| = \sum_{i=1}^r |Gx_i| = \sum_{i=1}^r |G:Gx_i|$$
+    $$|X| = \sum_{i=1}^r |Gx_i| = \sum_{i=1}^r |G:G_{x_i}of solvable groups are solv|$$
 \end{theorem}
 \begin{proof}
-    \(X\) is disjoint union of all orbit \(B_i\) with \(B_i = G_{x_i}\). Then holds \(|X| = \sum_{i=1}^r |Gx_i| = \sum_{i=1}^r |G:Gx_i|\) directly by lemma.
+    \(X\) is disjoint union of all orbit \(B_i\) with \(B_i = Gx_i\). Then holds \(|X| = \sum_{i=1}^r |Gx_i| = \sum_{i=1}^r |G:G_{x_i}|\) directly by lemma.
 \end{proof}
 
 \begin{lemma}

@@ -13,7 +13,7 @@
 \end{lemma}
 \begin{proof}
     There may be one-element orbit in \(X\). Let \(X^G = \{x\in X\mid gx = x\ \ \forall a\in G\}\). Thus \(X^G\) is precisely the union of the one-element orbits in \(X\). Let us suppose there are \(s\) one-element orbits, where \(0\leq s\leq r\). Then \(|X^G| = s\)(reordering the \(x_i\) if necessary), then we may rewrite Eq. in \ref{Bg}\[|X| = |X^G| + \sum_{i = s+1}^r |G{x_i}|\]
-    Also we know \(|Gx_i\) divides \(|G|\) by Lemma \ref{Bkg}. Consequently \(p\) divides \(|Gx_i\) for \(s+1\leq i \leq r\). So \(|X|-|X^G|\) is divisible by \(p\), so \(|X|=|X^G|\mod p\)
+    Also we know \(|Gx_i|\) divides \(|G|\) by Lemma \ref{Bkg}. Consequently \(p\) divides \(|Gx_i\) for \(s+1\leq i \leq r\). So \(|X|-|X^G|\) is divisible by \(p\), so \(|X|=|X^G|\mod p\)
 \end{proof}
 
 \begin{theorem}\label{centerbig}
@@ -31,7 +31,7 @@
 \end{remark}
 
 \begin{theorem}
-     Let \(p\) Be a prime, and \(G\) a \(p\)-group of order \(p^k\). There is a sequence of subgroup\[\{e\}=G_0<G_1\cdots <G_n =  G\ \ \text{with}\ \ |G_i|=p^i \wedge \forall i:\ \trianglelefteq G \]
+     Let \(p\) Be a prime, and \(G\) a \(p\)-group of order \(p^k\). There is a sequence of subgroup\[\{e\}=G_0<G_1\cdots <G_n =  G\ \ \text{with}\ \ |G_i|=p^i \wedge \forall i:\  G_i\trianglelefteq G \]
 \end{theorem}
 \begin{proof}
     We can use the induction on natural number here. For \(k = 1\) it is trivial. Let \(k>1\). By Theorem \ref{centerbig} we can find a central element \(a\) of order \(p\). The quotient group \(\bar{G} = G / (a)\) is of order \(p^{k-1}\).
